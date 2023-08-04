@@ -4,7 +4,7 @@ const fs=require("fs");
 const app=express();
 const mongoose = require('mongoose');
 const bodyparser=require("body-parser");
-mongoose.connect('mongodb://localhost/contactDance', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://0.0.0.0:27017/contactDance', {useNewUrlParser: true, useUnifiedTopology: true});
 const port= process.env.PORT || 8000;
 
 //define mongoose schema
@@ -38,7 +38,7 @@ app.post('/contact',(req,res)=>{
     myData.save().then(()=>{
         res.send("This item has been saved to the database")
     }).catch(()=>{
-        res.status(404).send("Item was not saved to the base")
+        res.status(404).send("Item was not saved to the database")
     });
     // res.status(200).render('contact.pug');
 })
